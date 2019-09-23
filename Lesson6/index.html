@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width">
+<title> Product App </title>
+</head>
+
+<body>
+
+	<div id="app">
+	
+	<div class="product-image">
+		<a href="https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding"><img :src="image" width="250" height="250"></a>
+	</div>
+	
+	<div class="product-info">
+		<h1>{{product}}</h1>
+		<p v-if="inStock">In Stock</p>
+		<p v-else
+			:class="{ removeFromCartButton: !inStock }">
+			Out of Stock
+		</p>
+		<h2> These {{product}} will surely keep your feet warm. </h2>
+	
+	<ul>
+		<li v-for="detail in details">{{detail}}</li>
+	</ul>
+	
+	
+	<div class="color-box"
+             v-for="variant in variants" 
+             :key="variant.variantId"
+             :style="{ backgroundColor: variant.variantColor }"
+             @mouseover="updateProduct(variant.variantImage)">
+    </div>
+
+      <button v-on:click="addToCart"
+			:disabled="!inStock"
+			:class="{ disabledButton: !inStock }">
+			Add to cart
+	  </button>
+	  
+      <button @click="removeFromCart">Remove from cart</button>
+	
+	<div class="cart">
+		<p>Cart({{cart}})</P>
+	</div>
+	
+	
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="main.js"></script>
+	
+</body>
+</html>
