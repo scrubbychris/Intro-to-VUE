@@ -1,0 +1,11 @@
+.color-box {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+ .disabledButton {
+	 background-color: #D3D3D3;
+ }
+ .removeFromCartButton {
+	 text-decoration: line-through;
+ }
